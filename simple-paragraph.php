@@ -31,7 +31,7 @@ else processLinkedStyles($characters);
 // For single strings return content to be styled
 if (is_string($content)) echo $content;
 else if (is_object($content)) bounceCharacterStyle($content); // accounts for {"i":{"b":"italic bold"}}
-else if (is_array($content)) styleWithinCharacterStyle($content); // handles content that is placed in an array, normally because there is more than one style, e.g. a hyperlink within an italic passage
+else if (is_array($content)) arrayWithinCharacterStyle($content); // handles content that is placed in an array, normally because there is more than one style, e.g. a hyperlink within an italic passage
 
 echo "</".$style.">"; // we access the object key and use this as the character style, but if we wanted to use style definitions other than the HTML ones we could extend the code to handle this
 }
@@ -42,9 +42,9 @@ function bounceCharacterStyle ($content)
 applyCharacterStyle($content);
 }
 
-function styleWithinCharacterStyle($paragraph)
+function arrayWithinCharacterStyle($paragraph)
 {
-// Handles arrays, e.g where there is italic in superscript or subscript or bold within italic, or where hyperlinked text is inside an italic passage.
+// Handles arrays, e.g this might be because there is a mix of italic and normal text in superscript or subscript or bold within italic, or where hyperlinked text is inside an italic passage.
 $i=0;
 // this simple example handles paragraphs where there are basic character formats such as bold, italics and superscript or subscript
 while ($i<count($paragraph))
