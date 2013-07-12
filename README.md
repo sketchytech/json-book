@@ -18,6 +18,6 @@ Next things to add and amend:
 After the "next things":
 
 - begin working on chapter level parsing
-- handle blockquotes, titles, subtitles
+- handle blockquotes, titles, subtitles, images
 
 Note: The initial parser is written in PHP for convenience but will be adapted to other languages and scripts (including JavaScript and Objective-C for iOS)
