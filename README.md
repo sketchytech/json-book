@@ -5,7 +5,7 @@ This is a project to develop an organized data structure for JSON books, journal
 
 Aims to incorporate:
 
-automated note numbering
-built-in support for multi-lingual books
-indexing by hashtags - see http://sketchytech.blogspot.co.uk/2013/02/hashtags-not-hyperlinks-index-of-future.html
+- automated note numbering
+- built-in support for multi-lingual books
+- indexing by hashtags - see http://sketchytech.blogspot.co.uk/2013/02/hashtags-not-hyperlinks-index-of-future.html
   
