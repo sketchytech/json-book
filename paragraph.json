@@ -1,0 +1,1 @@
+["This is a simple example of how we can ",{"i":"parse"}, " a ",{"b":"JSON"}, " paragraph using ",{"b":"PHP"}, ". This simple example can employ simple styles like ",{"b":"bold, "}, {"i":"italic, "},{"sup":"superscript"}," and ",{"sub":"subscript"}, ". The same JSON could be parsed by iOS or Android into a TextView bypassing HTML altogether."]
