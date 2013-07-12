@@ -9,3 +9,15 @@ Aims to incorporate:
 - built-in support for multi-lingual books
 - indexing by hashtags - see http://sketchytech.blogspot.co.uk/2013/02/hashtags-not-hyperlinks-index-of-future.html
   
+Next things to add and amend:
+
+- implement class/object structure to PHP
+- add parsing function for hyperlinks
+- add parsing function for notes
+
+After the "next things":
+
+- begin working on chapter level parsing
+- handle blockquotes, titles, subtitles
+
+Note: The initial parser is written in PHP for convenience but will be adapted to other languages and scripts (including JavaScript and Objective-C for iOS)
