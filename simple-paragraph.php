@@ -2,7 +2,7 @@
 $paragraph_json = file_get_contents("paragraph.json");
 $paragraph = json_decode($paragraph_json);
 
-$basic_tags = array("a","b","i","sup","sub");
+$basic_tags = array("a","b","i","sup","sub","q");
 
 function returnParagraph($paragraph)
 {
