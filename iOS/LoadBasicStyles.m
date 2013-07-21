@@ -20,3 +20,5 @@ NSDictionary *i, *b, *sup, *sub;
             };
 
 }
+
+// For information on how to apply attributes to a string see https://coderwall.com/p/y5w10w
