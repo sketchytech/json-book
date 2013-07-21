@@ -21,4 +21,6 @@ NSDictionary *i, *b, *sup, *sub;
 
 }
 
+// This will in the final version be a method that accepts a variable in order to determine font and size dynamically
+
 // For information on how to apply attributes to a string see https://coderwall.com/p/y5w10w
