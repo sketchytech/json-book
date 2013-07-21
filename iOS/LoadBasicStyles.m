@@ -20,7 +20,7 @@ NSArray *basic_tags;
             (id < NSCopying >)kCTSuperscriptAttributeName:[NSNumber numberWithInt:-1]
             };
 
-// Might be better for basic_tags array to contain strings not objects
+// Might be better for basic_tags array to contain strings not objects, or for it to be written as a dictionary of strings and values - work this out once JSON is imported
 basic_tags = @[i,b,sup,sub];
 
 }
