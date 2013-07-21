@@ -4,6 +4,7 @@
 @implementation LoadBasicStyles
 
 NSDictionary *i, *b, *sup, *sub;
+NSArray *basic_tags;
 
 - (void)loadBasicStyles {
     i = @{
@@ -18,6 +19,9 @@ NSDictionary *i, *b, *sup, *sub;
     sub = @{
             (id < NSCopying >)kCTSuperscriptAttributeName:[NSNumber numberWithInt:-1]
             };
+
+// Might be better for basic_tags array to contain strings not objects
+basic_tags = @[i,b,sup,sub];
 
 }
 
