@@ -100,7 +100,7 @@ NSMutableAttributedString *text;
     }
 }
 
--(void)bounceCharacterStyle:(NSDictionary*)$content
+-(void)bounceCharacterStyle:(NSDictionary*)content
 {
     // character object was nested one inside the other and so was sent here
 }
