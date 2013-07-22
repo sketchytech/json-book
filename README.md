@@ -25,3 +25,5 @@ After the "next things":
 - handle blockquotes, titles, subtitles, images
 
 Note: The initial parser is written in PHP for convenience but will be adapted to other languages and scripts (including JavaScript and Objective-C for iOS)
+
+- iOS parser now in progress - see iOS folder
