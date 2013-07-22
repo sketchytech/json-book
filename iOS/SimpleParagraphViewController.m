@@ -1,5 +1,5 @@
 //
-//  GylphiViewController.m
+//  SimpleParagraphViewController.m
 //  attributedString
 //
 //  Created by Anthony Levings on 21/07/2013.
