@@ -39,8 +39,22 @@ NSMutableAttributedString *text;
 
 - (void)loadJSON {
     // Load JSON into Objective-C objects
-    // At the moment this isn't JSON we're loading, we're just experimenting with NSArray, NSDictionary and NSString but the JSON will be translated into these object classes and so very similar.
-    paragraph = @[@"hello ",@{@"i":@"world"}, @". ", @{@"b":@"This is groovy"}, @{@"sup":@"This is groovy"}, @{@"sub":@"This is groovy"}];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"paragraph" ofType:@"json"];
+    // Retrieve local JSON file called paragraph.json
+    NSError *error = nil; // This so that we can access the error if something goes wrong
+    
+    NSData *JSONData = [NSData dataWithContentsOfFile:filePath options:NSDataReadingMappedIfSafe error:&error];
+
+    id JSONArray = [NSJSONSerialization
+                     JSONObjectWithData:JSONData
+                     // Creates an Objective-C NSData object from JSON Data
+                     options:NSJSONReadingAllowFragments
+                     error:&error];
+    if ([JSONArray respondsToSelector:@selector(getObjects:range:)]) {
+    paragraph = JSONArray;
+    }
+
+  
 }
 - (void)loadBasicStyles {
     i = @{
