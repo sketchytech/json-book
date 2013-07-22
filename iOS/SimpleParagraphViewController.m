@@ -3,7 +3,7 @@
 //  attributedString
 //
 //  Created by Anthony Levings on 21/07/2013.
-//  Copyright (c) 2013 Gylphi. All rights reserveGylphiViewControllerd.
+//  Copyright (c) 2013 Gylphi. All rights reserved.
 //
 
 #import "SimpleParagraphController.h"
