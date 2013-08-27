@@ -1,0 +1,21 @@
+JSON
+
+Citation formatting (multiple authors represent by an array AND page numbers are optional string):
+
+["author", "date", "page numbers"]
+
+
+Reference formatting:
+
+A useful reference structure for a chapter in an edited book that could be linked to citations:
+
+["author", "date", "reference text", "link", "DOI"]
+
+It could be made more complex if access to a high level of in-place meta-data was necessary:
+[["author1", "author2"],"chapter title", "chapter subtitle", {"book":["editor1","editor2"],"title","subtitle","city","publisher","ISBN"}, "page numbers", "linking URL", "DOI"]
+
+But it could be as simple as a string, although linking would then be more work:
+
+"Author (date) 'chapter title', in editor (ed.) book title, page numbers. City: Publisher."
+
+All three of these options should work in the final parser, since the JSON approach is all about flexibity.
