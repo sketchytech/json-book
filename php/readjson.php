@@ -27,7 +27,7 @@ function applyCharacterStyle($characters)
 
 $style=key($characters);
 $content=$characters->{$style};
-if (in_array($style, $this->linking_tags)) processLinkedStyles($characters);
+if (in_array($style, $this->linking_tags)) $this->processLinkedStyles($characters);
 // For simple styles open with tag
 else if (in_array($style, $this->basic_tags)) {echo "<".$style.">";
 // Process styles like notes and hyperlinks
@@ -67,7 +67,10 @@ function processLinkedStyles($characters){
 
 switch (key($characters))
 {
-case "a": processHyperlink($characters);
+case "a": $this->processHyperlink($characters);
+break;
+
+default: echo "<b>LINKED STYLE</b>";
 break;
 }
 
