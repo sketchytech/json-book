@@ -15,7 +15,7 @@ Aims to incorporate:
   
 Next things to add and amend:
 
-- continuing extending and implementing class/object structure to PHP
+- continue extending and implementing class/object structure to PHP
 - add parsing function for hyperlinks
 - add parsing function for notes
 
