@@ -4,11 +4,6 @@ json-book
 WANT TO SEE HOW THIS WORKS: download the entire PHP folder and open the chapter-parser.php file
 
 
-
-A PHPFiddle version of the code can be found here: http://phpfiddle.org/main/code/6007004
-
-A codepad version can be found here: http://codepad.org/zyTmc240
-
 This is a project to develop an organized data structure for JSON books, journals and magazines. The approach being taken is to develop the structure for the JSON alongside a set of parsers in order to establish an organic logic.
 
 Aims to incorporate:
@@ -20,7 +15,7 @@ Aims to incorporate:
   
 Next things to add and amend:
 
-- implement class/object structure to PHP
+- continuing extending and implementing class/object structure to PHP
 - add parsing function for hyperlinks
 - add parsing function for notes
 
