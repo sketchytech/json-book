@@ -1,6 +1,10 @@
 json-book
 ========
 
+WANT TO SEE HOW THIS WORKS: download the entire PHP folder and open the chapter-parser.php file
+
+
+
 A PHPFiddle version of the code can be found here: http://phpfiddle.org/main/code/6007004
 
 A codepad version can be found here: http://codepad.org/zyTmc240
