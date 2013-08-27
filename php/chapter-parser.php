@@ -13,7 +13,7 @@ function processObject($chapter) {
 if(is_object($chapter)){
 foreach($chapter as $key=>$value)
 {
-$title_tags = ["h1","h2","h3","h4","h5"];
+$title_tags = array("h1","h2","h3","h4","h5");
 if(in_array($key, $title_tags)) echo "<".$key.">".$value."</".$key.">";
 
 // Confirm that chapter is array
