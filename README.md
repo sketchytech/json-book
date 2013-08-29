@@ -8,6 +8,12 @@ This is a project to develop an organized data structure for JSON books, journal
 
 IT WILL BE FASTER, CLEANER, AND MORE ORGANIZED THAN ANY XML OR HTML STRUCTURE OR PARSER BUILT FOR THE SAME TASK. IT IS THE FUTURE OF BOOKS, A SHIFTING INTO THE FAST LANE, WHERE WE CAN SAVE TIME AND MONEY.
 
+Programmers will find it easy to adapt the parsers for their own needs and to innovate, making stylish kick-ass designs using JavaScript, PHP, iOS, Android, Ruby, Python and any other programming or scripting language you can name.
+
+The tech is being developed by a real-life editor and publisher who understands the needs, the constraints, and the current issues with other technologies. And sees that they are insufficient for future needs, and wants to get back to simply producing books in a format that will be permanent for the foreseable future.
+
+Even if you don't want to implement the structures and parsers as they are the methodology and simplicity behind them will hopefully inspire.
+
 Aims to incorporate:
 
 - automated note numbering
