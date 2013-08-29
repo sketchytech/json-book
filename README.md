@@ -12,7 +12,7 @@ Programmers will find it easy to adapt the parsers for their own needs and to in
 
 The tech is being developed by a real-life editor and publisher who understands the needs, the constraints, and the current issues with other technologies. And sees that they are insufficient for future needs, and wants to get back to simply producing books in a format that will be permanent for the foreseable future.
 
-Even if you don't want to implement the structures and parsers as they are the methodology and simplicity behind them will hopefully inspire.
+Even if you don't want to implement the structures and parsers as they are, the methodology and simplicity behind them will hopefully inspire.
 
 Aims to incorporate:
 
