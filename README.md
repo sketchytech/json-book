@@ -6,6 +6,8 @@ WANT TO SEE HOW THIS WORKS: download the entire PHP folder and open the chapter-
 
 This is a project to develop an organized data structure for JSON books, journals and magazines. The approach being taken is to develop the structure for the JSON alongside a set of parsers in order to establish an organic logic.
 
+IT WILL BE FASTER, CLEANER, AND MORE ORGANIZED THAN ANY XML OR HTML STRUCTURE OR PARSER BUILT FOR THE SAME TASK. IT IS THE FUTURE OF BOOKS, A SHIFTING INTO THE FAST LANE, WHERE WE CAN SAVE TIME AND MONEY.
+
 Aims to incorporate:
 
 - automated note numbering
