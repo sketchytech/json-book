@@ -1,0 +1,5 @@
+Index will rely on a list of terms, names, etc. (i.e. a replication of the index from the the printed book) without page numbers, when a term is clicked it will send a "GET" request to search for strings containing the term.
+- when string is matched it will return the paragraphs containing the term with the term highlighted
+- the paragraphs will be tagged with an identifying number
+- there will be a link next to each paragraph to go to it in the text
+- when the link is clicked, the chapter will be created with an id for the paragraph number in question and the reader will be taken there directly but will be able to continue reading the whole of the text
