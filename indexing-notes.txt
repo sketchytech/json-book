@@ -9,3 +9,5 @@ The index will rely on a list of terms, names, etc. (i.e. a replication of the i
 The index terms are searched and found dynamically, in this way any JSON can be used as an index and anyone can write any number of indexes for the same book, and an index can be easily updated or an old index can be used with a new version of the book without amendment.
 
 It also means that remote aggregators of information can search the index of the book without needing to search the whole text of the book. (Two options: 1. search the index, 2. search the whole text)
+
+iOS will keep a count of the headings, blockquotes and paragraphs, etc. AND use this in combination with the UIView tag property, to track which paragraphs are inside which view.
