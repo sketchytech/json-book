@@ -1,5 +1,11 @@
-Index will rely on a list of terms, names, etc. (i.e. a replication of the index from the the printed book) without page numbers, when a term is clicked it will send a "GET" request to search for strings containing the term.
-- when string is matched it will return the paragraphs containing the term with the term highlighted
-- the paragraphs will be tagged with an identifying number
-- there will be a link next to each paragraph to go to it in the text
-- when the link is clicked, the chapter will be created with an id for the paragraph number in question and the reader will be taken there directly but will be able to continue reading the whole of the text
+The index will rely on a list of terms, names, etc. (i.e. a replication of the index from the the printed book) without page numbers, when a term is clicked it will send a "GET" request to search for strings containing the term.
+- when string is matched it will return the paragraphs containing the term with the term highlighted (this will be index-parser.php script)
+- the paragraphs will be tagged with an identifying number (indicating their location in the text)
+- there will be a link next to each paragraph to go to it in the text (which will post a query string to chapter-parser.php)
+- when the link is clicked, the chapter will be created with an id number for each and every paragraph, title, blockquote, etc. and the reader will be taken there directly but will be able to continue reading the whole of the text by scrolling up or down
+- there will also be a list of all other entries for that term in a sidebar (or similar) that could employ JavaScript to dynamically navigate
+- the index will have a minimum of two views - an index view that looks like a traditional index, but displays paragraphs with matched terms in-place and a document view where the data is fed dynamically using AJAX or similar to a sidebar
+
+The index terms are searched and found dynamically, in this way any JSON can be used as an index and anyone can write any number of indexes for the same book, and an index can be easily updated or an old index can be used with a new version of the book without amendment.
+
+It also means that remote aggregators of information can search the index of the book without needing to search the whole text of the book. (Two options: 1. search the index, 2. search the whole text)
