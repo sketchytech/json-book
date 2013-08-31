@@ -3,6 +3,8 @@
 include_once('readjson.php');
 $itemNumber=0;
 $linkedItemNumber=6;
+global $notes;
+$notes=array();
 
 
 // Chapter
@@ -10,7 +12,7 @@ $chapter_json = file_get_contents("burn.json");
 $chapter = json_decode($chapter_json);
 
 processObject($chapter,$itemNumber,$linkedItemNumber);
-
+printNotes();
 function processObject($chapter,$itemNumber,$linkedItemNumber) {
 
 
@@ -55,12 +57,15 @@ $itemNumber++;}
 function arrayProcess($array,$itemNumber,$linkedItemNumber){
 
 if(is_string($array[0])){
+global $notes;
 $para=new paragraph;
 $para->returnParagraph($array);
+$new_notes=$para->returnNotes();
+if($new_notes) $notes=array_merge($notes,$new_notes);
 }
 
 else processObject($array,$itemNumber,$linkedItemNumber);
- echo "<a id='".$itemNumber."'>ANCHORPOINT ".$itemNumber."</a>";
+echo "<a id='".$itemNumber."'>ANCHORPOINT ".$itemNumber."</a>";
 $itemNumber++;
 }
 
@@ -68,6 +73,22 @@ function bounceObject($object,$itemNumber,$linkedItemNumber) {
 processObject($object,$itemNumber,$linkedItemNumber);
 $itemNumber++;
 }
+function printNotes(){
+global $notes;
+if (count($notes)>0){
+
+if (count($notes)==1) echo "<h2>Note</h2>";
+else echo "<h2>Notes</h2>";
+echo "<ol>";
+$i=0;
+while($i<count($notes)){
+echo "<li>".$notes[$i]."</li>";
+$i++;
+}
+echo "</ol>";}
+}
+
+// print notes list at end
 
 	?>
 <script type="text/javascript">
