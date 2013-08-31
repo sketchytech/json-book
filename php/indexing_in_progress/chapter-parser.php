@@ -1,7 +1,8 @@
 <?php
 
 include_once('readjson.php');
-$itemNumber=0;
+global $itemNumber;
+$itemNumber=1;
 $linkedItemNumber=6;
 global $notes;
 $notes=array();
@@ -16,7 +17,7 @@ printNotes();  // After chapter has been processed, notes are printed at end
 
 
 function processObject($chapter,$itemNumber,$linkedItemNumber) {
-
+global $itemNumber;
 
 if(is_object($chapter)){
 
@@ -27,7 +28,7 @@ $title_tags = array("h1","h2","h3","h4","h5");
 if(in_array($key, $title_tags)){ 
 echo "<".$key.">".$value."</".$key.">";
 echo "<a id='".$itemNumber."'>ANCHORPOINT ".$itemNumber."</a>";
-$itemNumber++;
+//$itemNumber++;
 }
 if($key=="blockquote") {
 echo "<".$key.">";
@@ -39,7 +40,7 @@ if (is_array($value)) {
 $numberOfItems=count($value);
 $i=0;
 while ($i<$numberOfItems){
-$itemNumber++;
+// $itemNumber++;
 //arrayProcess($value);
 if(is_string($value[$i])) {
 echo $value[$i];
@@ -52,12 +53,13 @@ $i++;
 }
 if($key=="blockquote") {echo "</".$key.">"; // this handles blockquotes that come between paragraphs but blockquotes within paragraphs must also be handled, because those are correct
 echo "<a id='".$itemNumber."'>ANCHORPOINT ".$itemNumber."</a>";
-$itemNumber++;}
+// $itemNumber++;
+}
 }
 }
 }
 function arrayProcess($array,$itemNumber,$linkedItemNumber){
-
+global $itemNumber;
 if(is_string($array[0])){
 global $notes;
 $para=new paragraph;
@@ -72,6 +74,7 @@ $itemNumber++;
 }
 
 function bounceObject($object,$itemNumber,$linkedItemNumber) {
+global $itemNumber;
 processObject($object,$itemNumber,$linkedItemNumber);
 $itemNumber++;
 }
