@@ -94,12 +94,15 @@ function processNotes ($note) {
 $style=key($note);
 $content=$note->{$style};
 array_push($this->notes,$content);
-echo "<sup>".count($this->notes)."</sup>";
+$note_number=count($this->notes);
+echo "<sup id='ref".$note_number."'><a href='#note".$note_number."'>".$note_number."</a></sup>";
 
 }
 
 function returnNotes(){
 return $this->notes;
+
+
 }
 
 function processCitation ($note) {
