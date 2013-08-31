@@ -4,7 +4,7 @@ class paragraph {
 
 public $basic_tags = array("a","b","i","sup","sub","blockquote");
 public $linking_tags = array("a","note","cite");
-
+public $notes=array();
 //
 
 function returnParagraph($paragraph,$found=NULL)
@@ -72,6 +72,9 @@ switch (key($characters))
 case "a": $this->processHyperlink($characters);
 break;
 
+case "note": $this->processNotes($characters);
+break;
+
 default: echo "<b>LINKED STYLE</b>";
 break;
 }
@@ -84,17 +87,27 @@ function processHyperlink($hyperlink){
 echo " there's a hyperlink you need to process buddy!";
 }
 
-function processNote ($note) {
+function processNotes ($note) {
 // keep running total of number of processed notes
 // return a note referent number
 // add note text to note array that can be used to construct a note list or deliver in a hover over the note referent - note text should be treated as a paragraph (array)
+$style=key($note);
+$content=$note->{$style};
+array_push($this->notes,$content);
+echo "<sup>".count($this->notes)."</sup>";
 
+}
+
+function returnNotes(){
+return $this->notes;
 }
 
 function processCitation ($note) {
 
 
 }
+
 }
 
 ?>
+
