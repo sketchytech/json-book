@@ -12,7 +12,9 @@ $chapter_json = file_get_contents("burn.json");
 $chapter = json_decode($chapter_json);
 
 processObject($chapter,$itemNumber,$linkedItemNumber);
-printNotes();
+printNotes();  // After chapter has been processed, notes are printed at end
+
+
 function processObject($chapter,$itemNumber,$linkedItemNumber) {
 
 
@@ -88,9 +90,8 @@ $i++;
 echo "</ol>";}
 }
 
-// print notes list at end
 
-	?>
+?>
 <script type="text/javascript">
 window.location.hash="20";
 </script>
