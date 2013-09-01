@@ -5,21 +5,33 @@ class paragraph {
 public $basic_tags = array("a","b","i","sup","sub","blockquote");
 public $linking_tags = array("a","note","cite");
 public $notes=array();
+public $paragraph_notes=array();
 //
 
 function returnParagraph($paragraph,$found=NULL)
 {
+$this->paragraph_notes=array();
 echo "<p>"; // open paragraph with tag
+$note_flag=0;
 $i=0;
 // this simple example handles paragraphs where there are basic character formats such as bold, italics and superscript or subscript
 while ($i<count($paragraph))
 {
 if	(is_string($paragraph[$i])&&isset($found)) echo preg_replace($found,"<span style='background-color:yellow;'>$0</span>",$paragraph[$i]);
 else if(is_string($paragraph[$i])) echo $paragraph[$i];
-else if(is_object($paragraph[$i])) $this->applyCharacterStyle($paragraph[$i],$found); // any text with a character style, which is denoted in the JSON by an object is passed to the applyCharacterStyle() method
+else if(is_object($paragraph[$i])) 
+{
+$this->applyCharacterStyle($paragraph[$i],$found); // any text with a character style, which is denoted in the JSON by an object is passed to the applyCharacterStyle() method
+if (key($paragraph[$i])=="note") $note_flag=1;
+
+}
 $i++;
 }
-if ($i==count($paragraph)) echo "</p>"; // when we reach the end of the array we close the paragraph
+if ($i==count($paragraph)) { echo "</p>"; // when we reach the end of the array we close the paragraph
+if ($note_flag==1) { echo "<p>";
+$this->printNotes();
+echo "</p>";}
+}
 }
 
 function applyCharacterStyle($characters,$found=NULL)
@@ -54,6 +66,7 @@ function arrayWithinCharacterStyle($paragraph)
 // Handles arrays, e.g where there is italic in superscript or subscript or bold within italic, or where hyperlinked text is inside an italic passage.
 $i=0;
 // this simple example handles paragraphs where there are basic character formats such as bold, italics and superscript or subscript
+
 while ($i<count($paragraph))
 {
 if(is_string($paragraph[$i])) echo $paragraph[$i];
@@ -94,8 +107,9 @@ function processNotes ($note) {
 $style=key($note);
 $content=$note->{$style};
 array_push($this->notes,$content);
+array_push($this->paragraph_notes,$content);
 $note_number=count($this->notes);
-echo "<sup id='ref".$note_number."'><a href='#note".$note_number."'>".$note_number."</a></sup>";
+echo "<sup id='ref".$note_number."'><a href='#note".$note_number."'>".$note_number."</a></sup> <span  style='display:none;background-color:yellow'>".$note_number.".  ".$content."</span>";
 
 }
 
@@ -108,6 +122,19 @@ return $this->notes;
 function processCitation ($note) {
 
 
+}
+function printNotes(){
+
+$note_number=count($this->notes)-count($this->paragraph_notes)+1;
+
+echo "<ol start='".$note_number."' style='color:charcol; box-shadow:inset 0px 3px 8px lightgray; margin-top:0px; margin-left:-10px; width:100%; padding:20px; background-color:beige;display:none;' class='notehidden'>";
+$i=0;
+while($i<count($this->paragraph_notes)){
+
+echo "<li style='margin-left:20px;' id='note".$note_number."'>".$this->paragraph_notes[$i]."</li>";
+$i++;
+}
+echo "</ol>";
 }
 
 }
