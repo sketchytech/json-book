@@ -9,17 +9,37 @@ $(document).ready(function(){
     $(".notehidden").slideDown(600,'linear');
   });
 });
+$(document).ready(function(){
+  $("#hideref").click(function(){
+    $(".refhidden").slideUp(600,'linear');
+  });
+  $("#showref").click(function(){
+    $(".refhidden").slideDown(600,'linear');
+  });
+});
+$(document).ready(function(){
+  $("#hideanchor").click(function(){
+    $(".anchorhidden").slideUp(600,'linear');
+  });
+  $("#showanchor").click(function(){
+    $(".anchorhidden").slideDown(600,'linear');
+  });
+});
 </script>
 
 <div style="position:fixed; top:0px; left:0px; padding:20px; background-color:gray; width:100%;">
 Show all notes:
 <button id="hide">Hide</button>
 <button id="show">Show</button>
+Show all references:
+<button id="hideref">Hide</button>
+<button id="showref">Show</button>
+Show all anchorpoints:
+<button id="hideanchor">Hide</button>
+<button id="showanchor">Show</button>
 </div>
 <div style="margin-top:100px">
 <?php
-
-?><?php
 
 include_once('readjson.php');
 global $itemNumber;
@@ -51,7 +71,7 @@ foreach($chapter as $key=>$value)
 $title_tags = array("h1","h2","h3","h4","h5");
 if(in_array($key, $title_tags)){ 
 echo "<".$key.">".$value."</".$key.">";
-echo "<a id='".$itemNumber."'>ANCHORPOINT ".$itemNumber."</a>";
+echo "<a id='".$itemNumber."' style='display:none' class='anchorhidden'>ANCHORPOINT ".$itemNumber."</a>";
 }
 if($key=="blockquote") {
 echo "<".$key.">";
@@ -79,7 +99,7 @@ $i++;
 }
 if($key=="blockquote") {echo "</".$key.">"; // this handles blockquotes that come between paragraphs but blockquotes within paragraphs must also be handled, because those are correct
 
-echo "<a id='".$itemNumber."'>ANCHORPOINT ".$itemNumber."</a>";
+echo "<a id='".$itemNumber."' style='display:none' class='anchorhidden'>ANCHORPOINT ".$itemNumber."</a>";
 
 }
 }
@@ -92,7 +112,7 @@ global $para;
 $para->returnParagraph($array);
 
 //else processObject($array,$linkedItemNumber);
-echo "<a id='".$itemNumber."'>ANCHORPOINT ".$itemNumber."</a>";
+echo "<a id='".$itemNumber."' style='display:none' class='anchorhidden'>ANCHORPOINT ".$itemNumber."</a>";
 $itemNumber++;
 }
 
