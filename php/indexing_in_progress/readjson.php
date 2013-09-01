@@ -1,28 +1,60 @@
 <?php
 
 class paragraph {
-
-public $basic_tags = array("a","b","i","sup","sub","blockquote");
-public $linking_tags = array("a","note","cite");
+// a list of styles that require nothing but replication in HTML
+public $basic_tags = array("b","i","sup","sub","blockquote");
+// a list of styles that require special handling
+public $linking_tags = array("a","note","ref");
+// an array of the notes contained in the entire chapter
 public $notes=array();
+// an array of the notes contained in the current paragraph being parsed
 public $paragraph_notes=array();
-//
+// an array of the reference citations contained in the current paragraph being parsed
+public $paragraph_citations=array();
 
+// This function parses whole paragraphs sent to it by chapter-parser.php and index-parser.php
 function returnParagraph($paragraph,$found=NULL)
 {
+// empty the $paragraph_notes array so that we start afresh for new para
 $this->paragraph_notes=array();
-echo "<p>"; // open paragraph with tag
+// empty the $paragraph_citations array so that we start afresh for new para
+$this->paragraph_citations=array();
+// open paragraph with a <p> tag
+echo "<p>";
+// $note_flag to be set if a paragraph contains notes
 $note_flag=0;
+// $citation_flag to be set if a paragraph contains citations
+$citation_flag=0;
 $i=0;
-// this simple example handles paragraphs where there are basic character formats such as bold, italics and superscript or subscript
+// formats paragraph
 while ($i<count($paragraph))
 {
 if	(is_string($paragraph[$i])&&isset($found)) echo preg_replace($found,"<span style='background-color:yellow;'>$0</span>",$paragraph[$i]);
 else if(is_string($paragraph[$i])) echo $paragraph[$i];
 else if(is_object($paragraph[$i])) 
 {
+// checks to see if there is a list of reference citations and if the citations are at their beginning or end (for purposes of inserting parentheses) 
+if (key($paragraph[$i])=="ref") {
+if($i>=1&&is_object($paragraph[$i-1])) {
+if (key($paragraph[$i-1])=="ref") {
+}
+}
+// Opening parenthesis for citations
+else {echo "(";}
+}
 $this->applyCharacterStyle($paragraph[$i],$found); // any text with a character style, which is denoted in the JSON by an object is passed to the applyCharacterStyle() method
+// Set the $note_flag so that 
 if (key($paragraph[$i])=="note") $note_flag=1;
+// Handle the closing off of reference citations and the setting of the flag
+if (key($paragraph[$i])=="ref") {
+// Set $citation_flag to indicate there are citations within the paragraph
+$citation_flag=1;
+// Semi-colon between references
+if(is_object($paragraph[$i+1])&&key($paragraph[$i+1])=="ref") echo "; ";
+// Closing parenthesis for citations
+else echo ")";
+}
+
 
 }
 $i++;
@@ -30,6 +62,9 @@ $i++;
 if ($i==count($paragraph)) { echo "</p>"; // when we reach the end of the array we close the paragraph
 if ($note_flag==1) { echo "<p>";
 $this->printNotes();
+echo "</p>";}
+if ($citation_flag==1) { echo "<p>";
+$this->printReferences();
 echo "</p>";}
 }
 }
@@ -41,6 +76,7 @@ function applyCharacterStyle($characters,$found=NULL)
 $style=key($characters);
 $content=$characters->{$style};
 if (in_array($style, $this->linking_tags)) $this->processLinkedStyles($characters);
+
 // For simple styles open with tag
 else if (in_array($style, $this->basic_tags)) {echo "<".$style.">";
 // Process styles like notes and hyperlinks
@@ -88,6 +124,9 @@ break;
 case "note": $this->processNotes($characters);
 break;
 
+case "ref": $this->processCitation($characters);
+break;
+
 default: echo "<b>LINKED STYLE</b>";
 break;
 }
@@ -121,23 +160,59 @@ return $this->notes;
 
 function processCitation ($note) {
 
+$style=key($note);
+$content=$note->{$style};
+array_push($this->paragraph_citations,$content);
+
+if (is_array($content[0]))
+{$i=0;
+while ($i<count($content[0])) {
+echo $content[0][$i];
+if ($i==count($content[0])-2) echo " and ";
+if ($i<count($content[0])-2) echo ", "; 
+$i++;
+}
+}
+else echo $content[0];
+echo ", ".$content[2].": ".$content[3];
 
 }
 function printNotes(){
 
 $note_number=count($this->notes)-count($this->paragraph_notes)+1;
 
-echo "<ol start='".$note_number."' style='color:charcol; box-shadow:inset 0px 3px 8px lightgray; margin-top:0px; margin-left:-10px; width:100%; padding:20px; background-color:beige;display:none;' class='notehidden'>";
+echo "<ol start='".$note_number."' style='color:charcol; box-shadow:inset 0px 3px 8px lightgray; margin-top:0px; margin-bottom:0px; margin-left:-10px; width:100%; padding:20px; background-color:beige;display:none;' class='notehidden'>";
 $i=0;
 while($i<count($this->paragraph_notes)){
 
-echo "<li style='margin-left:20px;' id='note".$note_number."'>".$this->paragraph_notes[$i]."</li>";
+echo "<li style='margin-left:40px;' id='note".$note_number."'>".$this->paragraph_notes[$i]."</li>";
 $i++;
 }
 echo "</ol>";
 }
 
+function printReferences(){ 
+echo "<ul style='color:charcol; box-shadow:inset 0px 3px 8px lightgray; margin-top:0px; margin-left:-10px; width:100%; padding:20px; background-color:lightgreen; list-style-type: none;display:none;' class='refhidden'>";
+$a=0;
+while($a<count($this->paragraph_citations)){
+$content=$this->paragraph_citations[$a];
+// This is a placeholder, code needs revising so that it searches references and displays full reference (or writes 'no further details after')
+echo "<li style='margin-left:20px;'>"."(";
+if (is_array($content[0]))
+{$i=0;
+while ($i<count($content[0])) {
+echo $content[0][$i];
+if ($i==count($content[0])-2) echo " and ";
+if ($i<count($content[0])-2) echo ", "; 
+$i++;
 }
-
+}
+else echo $content[0];
+echo ", ".$content[2].": ".$content[3].")"."</li>";
+$a++;
+}
+echo "</ul>";
+}
+}
 ?>
 
