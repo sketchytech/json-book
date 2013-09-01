@@ -1,0 +1,44 @@
+{
+    "references": [
+        [
+            [
+                "Smith",
+                "surname2",
+                "Bo"
+            ],
+            [
+                "initials1",
+                "initials2",
+                "Bill"
+            ],
+            "date",
+            "edited",
+            "Great Book. Canterbury: Gylphi."
+        ],
+        [
+            [
+                "Jones"
+            
+            ],
+            [
+                "initials1"
+            ],
+            "date",
+
+            "Another Great Book. Canterbury: Gylphi."
+        ],
+        [
+            [
+                "Wilson",
+                "surname2"
+            ],
+            [
+                "initials1",
+                "initials2"
+            ],
+            "date",
+            "edited",
+            "text"
+        ]
+    ]
+}
