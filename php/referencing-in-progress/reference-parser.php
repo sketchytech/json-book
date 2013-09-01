@@ -1,6 +1,6 @@
 <?php
 
-// Chapter
+// Builds a reference list from a json file
 $reference_json = file_get_contents("reference.json");
 $reference = json_decode($reference_json);
 /*global $flag_array_depth;
@@ -62,5 +62,6 @@ $flag_references_processed++;
 extractReference($reference_array);
 }
 
+// Next step is feed these references to location in the text by searching (i.e. preg_match) this will be done and displayed in similar way to notes
 
 ?>
