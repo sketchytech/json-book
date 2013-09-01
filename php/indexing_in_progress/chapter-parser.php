@@ -1,4 +1,25 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("#hide").click(function(){
+    $(".notehidden").slideUp(600,'linear');
+  });
+  $("#show").click(function(){
+    $(".notehidden").slideDown(600,'linear');
+  });
+});
+</script>
+
+<div style="position:fixed; top:0px; left:0px; padding:20px; background-color:gray; width:100%;">
+Show all notes:
+<button id="hide">Hide</button>
+<button id="show">Show</button>
+</div>
+<div style="margin-top:100px">
 <?php
+
+?><?php
 
 include_once('readjson.php');
 global $itemNumber;
@@ -38,6 +59,8 @@ echo "<".$key.">";
 }
 // Confirm that chapter is array
 if (is_array($value)) {
+
+
 global $itemNumber;
 $numberOfItems=count($value);
 $i=0;
@@ -64,13 +87,11 @@ echo "<a id='".$itemNumber."'>ANCHORPOINT ".$itemNumber."</a>";
 }
 function arrayProcess($array,$linkedItemNumber){
 global $itemNumber;
-if(is_string($array[0])){
 global $notes;
 global $para;
 $para->returnParagraph($array);
-}
 
-else processObject($array,$linkedItemNumber);
+//else processObject($array,$linkedItemNumber);
 echo "<a id='".$itemNumber."'>ANCHORPOINT ".$itemNumber."</a>";
 $itemNumber++;
 }
@@ -99,6 +120,7 @@ echo "</ol>";
 
 
 ?>
+</div>
 <script type="text/javascript">
 window.location.hash="20";
 </script>
