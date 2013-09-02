@@ -3,9 +3,7 @@
 // Basic text parser to convert XHTML to json-book format
 // Currently handles headings (h1-h6), blockquotes, italics, everything else is treated as plain text paragraphs
 
-
-
-// Current fails to retain italics and other embedded elements in blockquotes
+// Regex will be used to locate citations and references, so that they can be dynamic utilised
 
 // $paragraphs array holds entire document
 global $paragraphs;
