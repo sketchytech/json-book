@@ -3,20 +3,18 @@
 // Basic text parser to convert XHTML to json-book format
 // Currently handles headings (h1-h6), blockquotes, italics, everything else is treated as plain text paragraphs
 
-global $styledTextFlag;
-$styledTextFlag=0;
-echo $styledTextFlag;
+
 
 // Current fails to retain italics and other embedded elements in blockquotes
 
 // $paragraphs array holds entire document
 global $paragraphs;
 $paragraphs=array();
-$styledText=0;
+
 // $paragraph_single retains a single paragraph at a time
 global $paragraph_single;
 $paragraph_single=array();
-$italics=array();
+
 
 // load the XML
 $xmlDoc = new DOMDocument();
