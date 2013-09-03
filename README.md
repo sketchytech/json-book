@@ -1,6 +1,7 @@
 json-book
 ========
 
+json-book allows an XML or JSON file to be transformed into a dynamically display book
 **Watch an early video of what's possible:** http://youtu.be/orS8hD2JJLQ
 
 **It's called json-book because its power comes from json manipulation but it is being developed to work with XML/XHTML input.**
@@ -19,23 +20,27 @@ Updates and revisions are happening frequently, and a more structured and organi
 
 Even if you don't want to implement the structures and parsers as they are, the methodology and simplicity behind them will hopefully inspire.
 
+
 Aims to incorporate:
 
-- automated note numbering
+- automated note numbering and dynamic ordering for flexible placement of notes within a document's structure
 - reference linking (see reference-structure-outline.txt)
 - built-in support for multi-lingual books
 - indexing by hashtags - see http://sketchytech.blogspot.co.uk/2013/02/hashtags-not-hyperlinks-index-of-future.html
+- note taking and note export
+- save to EPUB
+- save to PDF
   
 Next things to add and amend:
 
 - continue extending and implementing class/object structure to PHP
 - add parsing function for hyperlinks
-- add parsing function for notes
+- extend parsing function for notes, to include conversion of notes in XML without requiring data to be altered from typical paired (HTML) structures like \<sup\>1\</sup\> (in text) and \<ol\>\<li\>\</li\>\</ol\> at end of document
+- parsing of (XML) reference list to be developed for conversion into json-book form from typical structures, e.g. author, initials (date) Book Title. Place: Publisher.
 
 After the "next things":
 
-- begin working on chapter level parsing
-- handle blockquotes, titles, subtitles, images
+- handle blockquotes better, start provision for images, tables (CSV structure?)
 
 Note: The initial parser is written in PHP for convenience but will be adapted to other languages and scripts (including JavaScript and Objective-C for iOS)
 
