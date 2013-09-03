@@ -1,7 +1,8 @@
 json-book
 ========
 
-json-book allows an XML or JSON file to be transformed into a dynamically display book
+json-book allows an XML or JSON file to be transformed into a dynamic book that can be displayed and output in any number of ways. Delivery can be anything from HTML on the web to JSON via an API. Book data can be downloaded and parsed inside mobile apps or can be used to build EPUBs, KF8s and PDFs for delivery. The possibilities for outputting current and future formats is endlessly extensible.
+
 **Watch an early video of what's possible:** http://youtu.be/orS8hD2JJLQ
 
 **It's called json-book because its power comes from json manipulation but it is being developed to work with XML/XHTML input.**
