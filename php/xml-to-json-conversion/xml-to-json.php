@@ -91,10 +91,12 @@ array_push($paragraph_single,$styledText);
 // citation
 else if ($a->nodeName=="citation") {
 
-$pattern='/\(name\)([A-Za-z, ]{1,})\(date\)([0-9]{1,})\(pages\)([0-9]{1,})/';
+$pattern='/\(name\)([A-Za-z, ]{1,})\(date\)([0-9]{1,})\(pages\)([0-9\-]{1,})/';
 $replacement='$1;$2;$3';
 $subject=$a->nodeValue;
 $citation=preg_replace($pattern, $replacement,$subject);
+
+
 $citation_array= explode(";", $citation);
 // explode names in array
 $names = explode(", ", $citation_array[0]);
@@ -104,6 +106,15 @@ $initials = array();
 $date = $citation_array[1];
 // page numbers
 $pages = $citation_array[2];
+// reinstate en dashes in page ranges if required
+$pattern='/([0-9]{1,})(\-)([0-9]{1,})/';
+$replacement='$1&ndash;$3';
+if (preg_match($pattern, $pages)) {
+$pages=preg_replace($pattern, $replacement,$pages);
+}
+
+
+
 $styledText= array("ref"=>array($names,$initials,$date,$pages));
 array_push($paragraph_single,$styledText);
 }
