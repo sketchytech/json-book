@@ -34,7 +34,7 @@ Show all notes:
 Show all references:
 <button id="hideref">Hide</button>
 <button id="showref">Show</button>
-Show all anchorpoints:
+Show all reader notes:
 <button id="hideanchor">Hide</button>
 <button id="showanchor">Show</button>
 </div>
