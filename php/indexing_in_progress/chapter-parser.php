@@ -41,6 +41,8 @@ Show all anchorpoints:
 <div style="margin-top:100px">
 <?php
 
+// TODO: Add listening and storage side of user notes 
+
 include_once('readjson.php');
 global $itemNumber;
 $itemNumber=1;
@@ -71,11 +73,11 @@ foreach($chapter as $key=>$value)
 $title_tags = array("h1","h2","h3","h4","h5");
 if(in_array($key, $title_tags)){ 
 echo "<".$key.">".$value."</".$key.">";
-echo "<a id='".$itemNumber."' style='display:none' class='anchorhidden'>ANCHORPOINT ".$itemNumber."</a>";
+echo "<div id='".$itemNumber."' style='display:none; background-color:lightyellow; color:red; padding:10px;' class='anchorhidden'><p>".$itemNumber." | <span style='color:black;' contenteditable='true'>Tap to write notes here.</span></p></div>";
 }
 if($key=="blockquote") {
 echo "<".$key.">";
-
+// make sure blockquotes handle italics and citations correctly
 }
 // Confirm that chapter is array
 if (is_array($value)) {
@@ -99,8 +101,7 @@ $i++;
 }
 if($key=="blockquote") {echo "</".$key.">"; // this handles blockquotes that come between paragraphs but blockquotes within paragraphs must also be handled, because those are correct
 
-echo "<a id='".$itemNumber."' style='display:none' class='anchorhidden'>ANCHORPOINT ".$itemNumber."</a>";
-
+echo "<div id='".$itemNumber."' style='display:none; background-color:lightyellow; color:red; padding:10px;' class='anchorhidden'><p>".$itemNumber." | <span style='color:black;' contenteditable='true'>Tap to write notes here.</span></p></div>";
 }
 }
 }
@@ -112,7 +113,7 @@ global $para;
 $para->returnParagraph($array);
 
 //else processObject($array,$linkedItemNumber);
-echo "<a id='".$itemNumber."' style='display:none' class='anchorhidden'>ANCHORPOINT ".$itemNumber."</a>";
+echo "<div id='".$itemNumber."' style='display:none; background-color:lightyellow; color:red; padding:10px;' class='anchorhidden'><p>".$itemNumber." | <span style='color:black;' contenteditable='true'>Tap to write notes here.</span></p></div>";
 $itemNumber++;
 }
 
