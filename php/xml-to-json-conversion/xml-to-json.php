@@ -23,6 +23,15 @@ $xmlDoc->loadXML($xml_revised);
 
 $x = $xmlDoc->documentElement;
 
+// TODO: Before styling document, find note list <ol><li></li></ol> etc. (it should be the final list in the document following print logic; use getElementsByTagName for <ol> - http://php.net/manual/en/domdocument.getelementsbytagname.php - to find it by counting the number and using the last one), then build an array of all the notes using getElementsByTagName again (for <li>)
+
+// TODO:  work sequentially through the <sup></sup> elements making sure that the numbers run in order 1,2,3,4, etc. (build an array of the numbers, or something similar) when the final number is reached make sure that the the count of the note array matches this number - if it doesn't and other <ol> lists exist these should be checked to see if they match length - warnings/options given to user
+
+// TODO: work through the sups replace inner text of <sup> (http://stackoverflow.com/questions/6001923/php-domdocument-question-how-to-replace-text-of-a-node) with something like <sup>(note)Inner text of note.</sup>
+
+// TODO: when complete text is parsed it should look for <sup> elements containing <sup>(note)Inner text of note.</sup> layout and use regex in a similar way to the citation parsing. It should also offer the user the ability to layout notes in other ways, e.g. <note>Inner text of note.</note> and recognise the <aside></aside> tags of EPUB3/iBooks
+
+
 // Cycle through the root's child nodes, i.e. the headings, paragraphs, blockquotes
 foreach ($x->childNodes AS $item)
   {
