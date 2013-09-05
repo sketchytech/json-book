@@ -27,6 +27,7 @@ Aims to incorporate:
 - automated note numbering and dynamic ordering for flexible placement of notes within a document's structure
 - reference linking (see reference-structure-outline.txt)
 - built-in support for multi-lingual books
+- support for editions (i.e. past versions of the book) and transfer of notes between old and new
 - indexing by hashtags - see http://sketchytech.blogspot.co.uk/2013/02/hashtags-not-hyperlinks-index-of-future.html
 - note taking and note export
 - save to EPUB
