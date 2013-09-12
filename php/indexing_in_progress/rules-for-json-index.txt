@@ -1,0 +1,16 @@
+Rules for index entries:
+
+Whole index is a single array, within which are the following:
+
+"string" = index term (first level)
+
+{"person":["surname","first name", "second name"]} = person to be search against surname only if the only surname in index BUT if multiple identical surnames use first names with logical combinations like initials to find entries in text
+
+["array"] = array that follows a string, object or array should be considered a collection of subentries (level 2, 3, etc.) 
+to the entry that immediately precedes it - use the array even if there is a single sub-entry
+
+{"i":"book title"} = styling is the same as in body of book text
+
+{"see also":"subatomic universe"} = refers to the entry that immediately precedes it
+
+Not currently supported = reversal such as  Pregnant Widow, The
