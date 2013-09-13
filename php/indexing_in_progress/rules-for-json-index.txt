@@ -13,4 +13,14 @@ to the entry that immediately precedes it - use the array even if there is a sin
 
 {"see also":"subatomic universe"} = refers to the entry that immediately precedes it
 
-Not currently supported = reversal such as  Pregnant Widow, The
+For titles or other words (beginning with a, an or the) that are reversed like Pregnant Widow, we can use the same approach as the "person" object. It might be:
+{"reverse":["Pregnant Widow","The"]}
+or rather:
+{"reverse":{"i":["Pregnant Widow","The"]}}
+which will search for The Pregnant Widow in the text. If however more specific object terms were used like:
+{"book":["Pregnant Widow","The"]}
+then the parser would also know to italicize. In addition, instead of {"i":"book title"} we could use {"book":["Pregnant Widow","The"]} and {"book":"Northanger Abbey"} reversing wherever an array exists but always italicizing.
+It is not a question of either/or - all approaches to book titles can be used within a single parser - the book object would just save markup.
+
+{"book":["Pregnant Widow","The"]} == {"reverse":{"i":["Pregnant Widow","The"]}}
+{"book":"Northanger Abbey"} == {"i":"Northanger Abbey"}
