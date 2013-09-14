@@ -1,5 +1,7 @@
 <?php
 
+// This file processes the paragraph level content
+
 class paragraph {
 // a list of styles that require nothing but replication in HTML
 public $basic_tags = array("b","i","sup","sub","blockquote");
@@ -162,7 +164,9 @@ function processCitation ($note) {
 
 $style=key($note);
 $content=$note->{$style};
-array_push($this->paragraph_citations,$content);
+
+// Only prevents duplicates in $this->paragraph_citations if they are identical page numbers as well as dates - needs refinement but might be better to impose this control when actual references are retrieved from the reference list
+if(!in_array($content,$this->paragraph_citations)) array_push($this->paragraph_citations,$content);
 
 if (is_array($content[0]))
 {$i=0;
@@ -194,6 +198,7 @@ echo "</ol>";
 function printReferences(){ 
 echo "<ul style='color:charcol; box-shadow:inset 0px 3px 8px lightgray; margin-top:0px; margin-left:-10px; width:100%; padding:20px; background-color:lightgreen; list-style-type: none;display:none;' class='refhidden'>";
 $a=0;
+
 while($a<count($this->paragraph_citations)){
 $content=$this->paragraph_citations[$a];
 // This is a placeholder, code needs revising so that it searches references and displays full reference (or writes 'no further details after')
