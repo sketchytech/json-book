@@ -31,7 +31,8 @@ $i=0;
 // formats paragraph
 while ($i<count($paragraph))
 {
-if	(is_string($paragraph[$i])&&isset($found)) echo preg_replace($found,"<span style='background-color:yellow;'>$0</span>",$paragraph[$i]);
+// If $found text has been sent it is highlighted and hyperlinked to anchor point in text (chapter-parser.php)
+if	(is_string($paragraph[$i])&&isset($found)) echo preg_replace($found,"<a href='chapter-parser.php#".$itemNumber."'  style='background-color:yellow;'>$0</a>",$paragraph[$i]);
 else if(is_string($paragraph[$i])) echo $paragraph[$i];
 else if(is_object($paragraph[$i])) 
 {
@@ -44,7 +45,7 @@ if (key($paragraph[$i-1])=="ref") {
 // Opening parenthesis for citations
 else {echo "(";}
 }
-$this->applyCharacterStyle($paragraph[$i],$found); // any text with a character style, which is denoted in the JSON by an object is passed to the applyCharacterStyle() method
+$this->applyCharacterStyle($paragraph[$i],$itemNumber,$found); // any text with a character style, which is denoted in the JSON by an object is passed to the applyCharacterStyle() method
 // Set the $note_flag so that 
 if (key($paragraph[$i])=="note") $note_flag=1;
 // Handle the closing off of reference citations and the setting of the flag
@@ -71,7 +72,7 @@ echo "</p>";}
 }
 }
 
-function applyCharacterStyle($characters,$found=NULL)
+function applyCharacterStyle($characters,$itemNumber,$found=NULL)
 {
 // function assumes that where character styles have been applied it has been done by creating an object
 
@@ -84,7 +85,7 @@ else if (in_array($style, $this->basic_tags)) {echo "<".$style.">";
 // Process styles like notes and hyperlinks
 // else processLinkedStyles($characters);
 // For single strings return content to be styled
-if	(is_string($content)&&isset($found)) echo preg_replace($found,"<span style='background-color:yellow;'>$0</span>",$content);
+if	(is_string($content)&&isset($found)) echo preg_replace($found,"<a href='chapter-parser.php#".$itemNumber."'  style='background-color:yellow;'>$0</a>",$content);
 else if (is_string($content)) echo $content;
 else if (is_object($content)) $this->bounceCharacterStyle($content); // accounts for {"i":{"b":"italic bold"}}
 else if (is_array($content)) $this->arrayWithinCharacterStyle($content); // handles content that is placed in an array, normally because there is more than one style, e.g. a hyperlink within an italic passage
