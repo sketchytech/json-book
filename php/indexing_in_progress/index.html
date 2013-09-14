@@ -1,0 +1,43 @@
+<html>
+<head><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+function getData(url_param,id){
+    $.ajax({
+        type: 'get',
+        url: 'index-parser.php',
+        data: {search_term:url_param},      
+        success: function(data) {
+$('.data').slideUp('slow',function(){ 
+            $(id).html(data);  
+            });
+          
+            
+            $(id).slideDown('slow',function(){ 
+            
+            });
+        }
+    });
+};
+
+$(document).ready(function(){
+ $('.clickMe').click(function(e){
+var a = $(this).text();
+var b = '#'+$(this).text().replace(/ /g,''); // id names cannot contain spaces so we remove them here and will via php when building the page
+     getData(a,b);
+     return false;     
+ });
+
+
+});
+</script>
+</head>
+<body>
+<div><a class='clickMe' value='work'>Burn</a></div>
+<div style='height: 400px; overflow:scroll; display:none; background-color:beige; box-shadow:inset 0px 3px 8px lightgray; padding: 10px;' class="data" id="Burn" ></div>
+<div><a class='clickMe'><i>What the Children Saw</i></a></div>
+<div style='height: 400px; overflow:scroll; display:none; background-color:beige; box-shadow:inset 0px 3px 8px lightgray; padding: 10px;' class="data" id="WhattheChildrenSaw" ></div><div><a class='clickMe' value='writer'>room-of-all-writers</a></div>
+<div style='height: 400px; overflow:scroll; display:none; background-color:beige; box-shadow:inset 0px 3px 8px lightgray; padding: 10px;' class="data" id="room-of-all-writers" ></div> 
+<div><a class='clickMe' value='work'>Forster</a></div>
+<div style='height: 400px; overflow:scroll; display:none; background-color:beige; box-shadow:inset 0px 3px 8px lightgray; padding: 10px;' class="data" id="Forster" ></div>
+ <!-- divto show result --></body>
+</html>
