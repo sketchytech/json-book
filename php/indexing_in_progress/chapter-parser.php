@@ -44,11 +44,14 @@ Show all reader notes:
 // TODO: Add listening and storage side of user notes 
 
 include_once('readjson.php');
+
+
 global $itemNumber;
 $itemNumber=1;
 $linkedItemNumber=6;
 global $para;
 $para=new paragraph; // create new paragraph object from 
+
 
 
 // Chapter
