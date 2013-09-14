@@ -104,7 +104,8 @@ $i++;
 }
 if($key=="blockquote") {echo "</".$key.">"; // this handles blockquotes that come between paragraphs but blockquotes within paragraphs must also be handled, because those are correct
 
-echo "<div id='".$itemNumber."' style='display:none; background-color:lightyellow; color:red; padding:10px;' class='anchorhidden'><p>".$itemNumber." | <span style='color:black;' contenteditable='true'>Tap to write notes here.</span></p></div>";
+// Add user notes
+addUserNotes();
 }
 }
 }
@@ -113,10 +114,11 @@ function arrayProcess($array,$linkedItemNumber){
 global $itemNumber;
 global $notes;
 global $para;
-$para->returnParagraph($array);
+$para->returnParagraph($array,$itemNumber);
 
 //else processObject($array,$linkedItemNumber);
-echo "<div id='".$itemNumber."' style='display:none; background-color:lightyellow; color:red; padding:10px;' class='anchorhidden'><p>".$itemNumber." | <span style='color:black;' contenteditable='true'>Tap to write notes here.</span></p></div>";
+// Add user notes
+addUserNotes();
 $itemNumber++;
 }
 
@@ -142,9 +144,14 @@ echo "</ol>";
 }
 }
 
+function addUserNotes() {
+// Adds user notes
+global $itemNumber;
+echo "<div id='user".$itemNumber."' style='display:none; background-color:lightyellow; color:red; padding:10px;' class='anchorhidden'><p>".$itemNumber." | <span style='color:black;' contenteditable='true'>Tap to write notes here.</span></p></div>";
+}
 
 ?>
 </div>
 <script type="text/javascript">
-window.location.hash="20";
+//window.location.hash="20";
 </script>
