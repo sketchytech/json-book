@@ -15,14 +15,14 @@ public $paragraph_notes=array();
 public $paragraph_citations=array();
 
 // This function parses whole paragraphs sent to it by chapter-parser.php and index-parser.php
-function returnParagraph($paragraph,$found=NULL)
+function returnParagraph($paragraph,$itemNumber,$found=NULL)
 {
 // empty the $paragraph_notes array so that we start afresh for new para
 $this->paragraph_notes=array();
 // empty the $paragraph_citations array so that we start afresh for new para
 $this->paragraph_citations=array();
-// open paragraph with a <p> tag
-echo "<p>";
+// open paragraph with a <p> tag and give it an id tag
+echo "<p id='".$itemNumber."'>";
 // $note_flag to be set if a paragraph contains notes
 $note_flag=0;
 // $citation_flag to be set if a paragraph contains citations
