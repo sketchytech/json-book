@@ -63,7 +63,7 @@ if(is_string($array[$i])){
 if(preg_match('/('.$searchTerm.')/i',$array[$i])) {
 // Replace fixed search term with $_GET from URL
 $para=new paragraph;
-$para->returnParagraph($array,'/('.$searchTerm.')/i');
+$para->returnParagraph($array,$itemNumber,'/('.$searchTerm.')/i');
 echo "Paragraph ".$itemNumber; // this will be replaced by a hyperlink to chapter parser with itemNumber in query string, which will create an anchor point at the paragraph and take reader straight there
 $i=count($array); // Once the word has been found once in the sentence, force the end of the search for this paragraph 
 }
@@ -77,8 +77,9 @@ $key=key($array[$i]);
 if(in_array($key,$basic_tags)&&preg_match('/('.$searchTerm.')/i',$array[$i]->{$key})){
 
 $para=new paragraph;
-$para->returnParagraph($array,'/('.$searchTerm.')/i');
-echo "Paragraph ".$itemNumber; // this will be replaced by a hyperlink to chapter parser with itemNumber in query string, which will create an anchor point at the paragraph and take reader straight there
+$para->returnParagraph($array,$itemNumber,'/('.$searchTerm.')/i');
+// Tap on the hyperlink to go to place in text - adapt so that paragraph can be tapped.
+echo "<a href='chapter-parser.php#".$itemNumber."'>Paragraph ".$itemNumber."</a>"; // this will be replaced by a hyperlink to chapter parser with itemNumber in query string, which will create an anchor point at the paragraph and take reader straight there
 $i=count($array); // Once the word has been found once in the sentence, force the end of the search for this paragraph 
 }
 
