@@ -1,43 +1,29 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
 <script>
+// Currently shows all notes and references
+// TODO: show one box that swipes to reveal notes, refs, user notes
+// TODO: reveal only notes and references for single paragraph by using this.id
+
 $(document).ready(function(){
-  $("#hide").click(function(){
-    $(".notehidden").slideUp(600,'linear');
-  });
-  $("#show").click(function(){
-    $(".notehidden").slideDown(600,'linear');
+$a=0;
+$(".paragraph").click(function(){
+    if ($a==0) { 
+        $(".notehidden").slideDown(600,'linear');
+        $(".refhidden").slideDown(600,'linear');
+        $(".anchorhidden").slideDown(600,'linear');
+    $a=1;}
+  else {
+      $(".notehidden").slideUp(600,'linear');
+      $(".refhidden").slideUp(600,'linear');
+      $(".anchorhidden").slideUp(600,'linear');
+        $a=0;}  
   });
 });
-$(document).ready(function(){
-  $("#hideref").click(function(){
-    $(".refhidden").slideUp(600,'linear');
-  });
-  $("#showref").click(function(){
-    $(".refhidden").slideDown(600,'linear');
-  });
-});
-$(document).ready(function(){
-  $("#hideanchor").click(function(){
-    $(".anchorhidden").slideUp(600,'linear');
-  });
-  $("#showanchor").click(function(){
-    $(".anchorhidden").slideDown(600,'linear');
-  });
-});
+
 </script>
 
-<div style="position:fixed; top:0px; left:0px; padding:20px; background-color:gray; width:100%;">
-Show all notes:
-<button id="hide">Hide</button>
-<button id="show">Show</button>
-Show all references:
-<button id="hideref">Hide</button>
-<button id="showref">Show</button>
-Show all reader notes:
-<button id="hideanchor">Hide</button>
-<button id="showanchor">Show</button>
-</div>
+
 <div style="margin-top:100px">
 <?php
 
