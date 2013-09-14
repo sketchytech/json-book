@@ -64,7 +64,7 @@ if(preg_match('/('.$searchTerm.')/i',$array[$i])) {
 // Replace fixed search term with $_GET from URL
 $para=new paragraph;
 $para->returnParagraph($array,'/('.$searchTerm.')/i');
-echo "Item ".$itemNumber; // this will be replaced by a hyperlink to chapter parser with itemNumber in query string, which will create an anchor point at the paragraph and take reader straight there
+echo "Paragraph ".$itemNumber; // this will be replaced by a hyperlink to chapter parser with itemNumber in query string, which will create an anchor point at the paragraph and take reader straight there
 $i=count($array); // Once the word has been found once in the sentence, force the end of the search for this paragraph 
 }
 }
@@ -78,6 +78,7 @@ if(in_array($key,$basic_tags)&&preg_match('/('.$searchTerm.')/i',$array[$i]->{$k
 
 $para=new paragraph;
 $para->returnParagraph($array,'/('.$searchTerm.')/i');
+echo "Paragraph ".$itemNumber; // this will be replaced by a hyperlink to chapter parser with itemNumber in query string, which will create an anchor point at the paragraph and take reader straight there
 $i=count($array); // Once the word has been found once in the sentence, force the end of the search for this paragraph 
 }
 
@@ -111,4 +112,4 @@ echo $value;
 }
 }
 
-?>
+	?>
