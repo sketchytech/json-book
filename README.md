@@ -1,6 +1,8 @@
 json-book
 ========
 
+**If you want to learn more about the nuts and bolts of json-book visit the [Wiki](https://github.com/sketchytech/json-book/wiki/_pages)**
+
 json-book allows an XML or JSON file to be transformed into a dynamic book that can be displayed and output in any number of ways. Delivery can be anything from HTML on the web to JSON via an API. Book data can be downloaded and parsed inside mobile apps or can be used to build EPUBs, KF8s and PDFs for delivery. The possibilities for outputting current and future formats is endlessly extensible.
 
 **Watch an early video of what's possible:** http://youtu.be/orS8hD2JJLQ
