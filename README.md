@@ -54,13 +54,10 @@ Note: The initial parser is written in PHP for convenience but will be adapted t
 ```
 if let url = NSBundle.mainBundle().pathForResource("filesystem", ofType: "json"),
         d = NSData(contentsOfFile: url),
-        jDict = JSONParser.parseDictionary(d){
-              println("data")
-            if let epub = EPUB(name:"MyEPUB", dict: jDict) {
+        jDict = JSONParser.parseDictionary(d),
+        epub = EPUB(name:"MyEPUB", dict: jDict){
                 epub.createSubdirectories()
                 epub.saveStaticFiles()
-                
-            }
         }
 ```
 After this stage the subdirectories and "static" files have been created. The next step is to create the dynamic files.
