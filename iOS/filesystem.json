@@ -1,0 +1,56 @@
+{
+    "platform": "epub",
+    "version": 3,
+    "subdirectories": [
+                       "META-INF",
+                       "OEBPS",
+                       "OEBPS/css",
+                       "OEBPS/images"
+                       ],
+    "files": [
+              {
+              "mimetype": "application/epub+zipheader"
+              },
+              {
+              "[images]": "$0"
+              },
+              {
+              "container.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><container version=\"1.0\" xmlns=\"urn:oasis:names:tc:opendocument:xmlns:container\"><rootfiles><rootfile full-path=\"OEBPS/content.opf\" media-type=\"application/oebps-package+xml\" /></rootfiles></container>"
+              },
+              {
+              "cover.xmhtl": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><!DOCTYPE html><html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:epub=\"http://www.idpf.org/2007/ops\"><head><title>cover</title></head><body><div style=\"text-align:center;\" epub:type=\"cover\"><img src=\"images/cover.jpg\" alt=\"cover image\" style=\"max-width:100%;\" /></div></body></html>"
+              },
+              {
+              "toc.xmhtl": "$0"
+              },
+              {
+              "content.opf": "$0"
+              },
+              {
+              "[chapters]": "$0"
+              },
+              {
+              "stylesheet.css": "$0"
+              }
+              ],
+    "file-locations": {
+        "mimetype": null,
+        "[images]": "OEBPS/images",
+        "container.xml": "META-INF",
+        "cover.xmhtl": "OEBPS",
+        "toc.xmhtl": "OEBPS",
+        "content.opf": "OEBPS",
+        "[chapters]": "OEBPS",
+        "stylesheet.css": "OEBPS/css"
+    },
+    "file-templates": {
+        "mimetype": null,
+        "[images]": "images.json",
+        "container.xml": null,
+        "cover.xmhtl": null,
+        "toc.xmhtl": " toc.json",
+        "content.opf": "content.json",
+        "[chapters]": "chapters.json",
+        "stylesheet.css": "stylesheet.json"
+    }
+}
