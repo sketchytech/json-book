@@ -62,7 +62,7 @@ public struct JSONDictionary:SequenceType {
         self.restrictTypeChanges = restrictTypeChanges
         
     }
-    public init <T>(dict:Dictionary<String,T>, restrictTypeChanges:Bool = true, anyValueIsNullable:Bool = true) {
+    public init (dict:Dictionary<String,AnyObject>, restrictTypeChanges:Bool = true, anyValueIsNullable:Bool = true) {
         self.anyValueIsNullable = anyValueIsNullable
         self.restrictTypeChanges = restrictTypeChanges
         // AJL: replace with map?
