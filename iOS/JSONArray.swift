@@ -414,7 +414,15 @@ extension JSONArray {
     
     
 }
-
+extension JSONArray {
+    mutating func removeLast() {
+            let a = self.count-1
+            stringDict?.removeValueForKey(a)
+            numDict?.removeValueForKey(a)
+            nullDict?.removeValueForKey(a)
+            arrayDict?.removeValueForKey(a)
+            dictDict?.removeValueForKey(a)
+}
 // add methods for dictionary, avoid accidental additions
 extension JSONArray {
     // Append method
