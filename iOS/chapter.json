@@ -1,0 +1,155 @@
+{
+    "chapter": 
+        {
+            "file-type": "xhtml",
+            "platform": "epub",
+            "subplatform": "iBooks",
+            "version": 3,
+            "permitted-attributes":{"p":["id","class"],"note":["id","class","epub:type"]}
+            },
+            "header": [
+                "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<!DOCTYPE html>\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:epub=\"http://www.idpf.org/2007/ops\">\n<head>\n<title>",
+                {
+                    "$0" : "title"
+                },
+                "</title>\n<link href=\"css/stylesheet.css\" rel=\"stylesheet\" type=\"text/css\" />\n</head>\n<body id=\"",
+                {
+                    "$0" : "chapter-id"
+                },
+                "\" lang=\"",
+                {
+                    "$0": "language-code",
+                    "default": "en-US"
+                },
+                "\" xml:lang=\"",
+                {
+                    "$0": "language-code",
+                    "default": "en-US"
+                },
+                "\">"
+            ],
+            "body": {
+                "h1": [
+                    "<h1",
+                    {
+                        "$0": "attributes"
+                    },
+                       ">",{
+                       "$0": "h1"
+                       },
+                    "</h1>"
+                ],
+                "h2": [
+                    "<h2 class=\"subtitle\">",
+                    {
+                        "$0": "subtitle"
+                    },
+                    "</h2>"
+                ],
+                "p": [
+                    "<p",
+                    {
+                        "$0": "attributes"
+                    },
+                    ">",
+                    {
+                        "$0": "p"
+                    },
+                    "</p>"
+                      ],
+                "id": [
+                      " id=\"",
+                      {
+                      "$0": "id"
+                      },
+                      "\""
+                       ],
+                "class": [
+                       " class=\"",
+                       {
+                       "$0": "class"
+                       },
+                       "\""
+                       ],
+                "blockquote": [
+                    "<blockquote>",
+                    {
+                        "$0": "blockquote"
+                    },
+                    "</blockquote>"
+                ],
+                "figure": [
+                    "<figure><img src=\"",
+                    {
+                        "$0": "image-filename"
+                    },
+                    "\", alt=\"",
+                    {
+                        "$0": "image-description"
+                    },
+                    "\"",
+                    "/><figcaption><p>",
+                    {
+                        "$0": "figure-caption"
+                    },
+                    "</p></figcaption></figure>"
+                ],
+                "i": [
+                    "<i>",
+                    {
+                        "$0": "i"
+                    },
+                    "</i>"
+                ],
+                "b": [
+                    "<b>",
+                    {
+                        "$0": "b"
+                    },
+                    "</b>"
+                ],
+                "link": [
+                    "<a href=\"",
+                    {
+                        "$0": "link-url"
+                    },
+                    "\" >",
+                    {
+                        "$0": "link-text"
+                    },
+                    "</a>"
+                ],
+                "noteref": [
+                    "<sup><a id=\"ref",
+                    {
+                        "$0": "note-number"
+                    },
+                    "\" epub:type=\"noteref\" href=\"#note",
+                    {
+                        "$0": "note-number"
+                    },
+                    "\">",
+                    {
+                        "$0": "note-number"
+                    },
+                    "</a></sup>"
+                ],
+                "note": [
+                    "<aside id=\"note\" epub:type=\"footnote\">",
+                    {
+                        "$0": "note"
+                    },
+                    "</aside>"
+                ],
+                "reference": [
+                    "<p class=\"ref\">",
+                    {
+                        "$0": "reference"
+                    },
+                    "</p>"
+                ]
+            },
+            "footer": "</body></html>"
+        }
+    
+	}
