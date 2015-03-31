@@ -45,8 +45,9 @@ struct EPUBChapter {
         }
         return headHTML
     }
-    
     func constructBody(json:JSONArray) -> String {
+
+        
         var bodyHTML = ""
         for b in json {
             // if it's a string we simply add the string to the bodyHTML string
@@ -54,45 +55,55 @@ struct EPUBChapter {
                 bodyHTML += str
                 // This bit works
             }
-            // TODO: Not currently working properly, doesn't capture nested values
                 
             // if it's a dictionary we know it has a tag key
             else if let dict = b.jsonDict
             {
-                var elementHTML = ""
-                // work through the keys and values of the dictionary
-                for (k,v) in dict {
-                    // if it matches one in the list of tags in the body template work through that element's array to build the relevant HTML
-                    if let element = body[k]?.jsonArr {
-                        for e in element {
-                            // if the template contains text then add it to the elementHTML substring
-                            if let text = e.str {
-                                elementHTML += text
-                            }
-                            // if the value is a dictionary then there is text to insert
-                            if let value = e.jsonDict,
-                            key = value["$0"]?.str {
-                                // the value of the element key is the main text
-                                if let text = dict[key]?.str {
-                                elementHTML += text
-                                }
-                                // if the value of the element key is an array then it is a collection of elements
-                                else if let json = dict[key]?.jsonArr {
-                                 // cycle back through
-                                    elementHTML += constructBody(json)
-                                }
-                            }
-                        }
-                    }
-                    
-                }
-                bodyHTML += elementHTML
+                bodyHTML += extractFromDictionary(dict)
 
             }
         }
     
       return bodyHTML
     }
+
+    // this function makes sure we have all the
+    func extractFromDictionary(dict:JSONDictionary) -> String {
+        var elementHTML = ""
+        for (k,v) in dict {
+            // if it matches one in the list of tags in the body template work through that element's array to build the relevant HTML
+            if let element = body[k]?.jsonArr {
+                for e in element {
+                    // if the template contains text then add it to the elementHTML substring
+                    if let text = e.str {
+                        elementHTML += text
+                    }
+                    // if the value is a dictionary then there is text to insert
+                    if let value = e.jsonDict,
+                        key = value["$0"]?.str {
+                            // the value of the element key is the main text
+                            if let text = dict[key]?.str {
+                                elementHTML += text
+                            }
+                                // if the value is a dictionary, then these are the attributes
+                            else if let dict = dict[key]?.jsonDict {
+                                
+                                
+                                elementHTML += extractFromDictionary(dict)
+                                
+                            }
+                                // if the value of the element key is an array then it is a collection of elements
+                            else if let json = dict[key]?.jsonArr {
+                                // cycle back through
+                                elementHTML += constructBody(json)
+                            }
+                    }
+                }
+            }
+            
+        }
+        return elementHTML
+}
     
 }
 struct EPUB {
