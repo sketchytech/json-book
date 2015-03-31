@@ -41,7 +41,7 @@ public struct JSONArray:SequenceType {
         return count
     }
     
-    public init <T>(array:[T], restrictTypeChanges:Bool = true, anyValueIsNullable:Bool = true) {
+    public init (array:[AnyObject], restrictTypeChanges:Bool = true, anyValueIsNullable:Bool = true) {
         // AJL: replace with map?
         self.anyValueIsNullable = anyValueIsNullable
         self.restrictTypeChanges = restrictTypeChanges
