@@ -1,11 +1,20 @@
 json-book
 ========
-Added a Typesetter type that can return a series of text views from an attributed string of any length.
+Added a Typesetter type that can return a series of text views from an attributed string of any length and a PagedScrollView type that can generate a paging scroll view from a collection of text views.
 ```
-let type = Typesetter(attrStr: attributedString)
-let tViews = type.textViews(CGRect(x: 0, y: 0, width: scrollView.frame.width, height: scrollView.frame.height))
+ if let url = NSBundle.mainBundle().URLForResource("swift", withExtension: "html"),
+        text = NSAttributedString(fileURL: url, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType], documentAttributes: nil, error: nil)
+        {
+        
+        let aRect = CGRect(x: self.view.frame.maxX*0.125, y: self.view.frame.maxY*0.15, width: self.view.frame.maxX*0.75, height: self.view.frame.maxY*0.7)
+        
+        let type = Typesetter(attrStr: text)
+        let tViews = type.textViews(aRect)
+        let scrollView = PagingScrollView(frame: aRect, textViews: tViews)
+        self.view.addSubview(scrollView)
+        }
 ```
-
+The above code when placed in your view controller will create a paged scroll view with the entirety of Gulliver's Travels if you have copied the Typesetter.swift file, PagingScrollView.swift file and swift.html file from the iOS > Sources folder.
 **Note to Watchers: At the heart of this project are open standards enabling portability of rich content across apps and the web. I'm pleased to announce, therefore, that an initial "fixed-layout" implementation of json-book will appear in The Waking Prince (iOS). And, later this year (2015), I hope to release initial versions of creation and reader apps for iOS, before adding web support for online reading (using PHP and JavaScript). This will be the first step towards a typesetting and display format that is built for electronic books primarily but has the potential to be extended to print.**
 
 **If you want to learn more about the nuts and bolts of json-book visit the [Wiki](https://github.com/sketchytech/json-book/wiki/_pages)**
