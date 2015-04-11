@@ -1,14 +1,11 @@
-class Typesetter:NSObject, NSLayoutManagerDelegate {
+struct Typesetter {
     let textStorage:NSTextStorage
     // an instance is created with an NSAttributedString
     init (attrStr:NSAttributedString) {
         textStorage = NSTextStorage(attributedString: attrStr)
     }
     
-    func layoutManager(layoutManager: NSLayoutManager, didCompleteLayoutForTextContainer textContainer: NSTextContainer?, atEnd layoutFinishedFlag: Bool) {
-        println("called")
-
-    }
+   
     // if views are for a (paging) scroll view then text views will given x position that places them one after the other
     func textViews(frame:CGRect, prepareForScrollView:Bool = true)->[UITextView] {
         // array for text views that will be returned
