@@ -15,6 +15,7 @@ Added a Typesetter type that can return a series of text views from an attribute
         }
 ```
 The above code when placed in your view controller will create a paged scroll view with the entirety of Gulliver's Travels if you have copied the Typesetter.swift file, PagingScrollView.swift file and swift.html file from the iOS > Sources folder.
+
 **Note to Watchers: At the heart of this project are open standards enabling portability of rich content across apps and the web. I'm pleased to announce, therefore, that an initial "fixed-layout" implementation of json-book will appear in The Waking Prince (iOS). And, later this year (2015), I hope to release initial versions of creation and reader apps for iOS, before adding web support for online reading (using PHP and JavaScript). This will be the first step towards a typesetting and display format that is built for electronic books primarily but has the potential to be extended to print.**
 
 **If you want to learn more about the nuts and bolts of json-book visit the [Wiki](https://github.com/sketchytech/json-book/wiki/_pages)**
