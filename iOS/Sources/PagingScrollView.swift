@@ -6,7 +6,7 @@ class PagingScrollView:UIScrollView, UIScrollViewDelegate  {
         self.tViews = tViews
         super.init(frame: frame)
         self.delegate = self
-        self.contentSize = CGSizeMake(self.frame.size.width * CGFloat(tViews.count-1),
+        self.contentSize = CGSizeMake(self.frame.size.width * CGFloat(tViews.count),
             self.frame.size.height)
         self.pagingEnabled=true
         // generate and add initial text views to scroll view (no more than three)
