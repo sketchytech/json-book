@@ -1,4 +1,4 @@
-Some ideas for displaying notes:
+Some ideas for displaying notes in json-book UIs:
 
 - in place reveal with JQUERY show and hide
 - a panel that displays current notes based on the offset of the page to tell it location relative to notes
